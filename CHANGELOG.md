@@ -1,3 +1,10 @@
+# 1.0.0 (2025-12-14)
+
+
+### Features
+
+* initial commit with anesthesia scheduler ([4658c23](https://github.com/Viulica/anesthesia-scheduler/commit/4658c23cec02018ecefccc4a1b01113913b7d93f))
+
 ## [1.7.6](https://github.com/ixartz/SaaS-Boilerplate/compare/v1.7.5...v1.7.6) (2025-05-01)
 
 
