@@ -31,24 +31,11 @@ export const AnesthesiaFooter = () => {
           {/* Company Info */}
           <div>
             <div className="mb-4 flex items-center gap-3">
-              <div className="flex size-10 items-center justify-center rounded-lg bg-gradient-to-br from-purple-600 to-purple-500 text-white shadow-lg shadow-purple-500/30">
-                <svg
-                  className="size-6"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect x="3" y="3" width="4" height="4" rx="1" fill="currentColor" />
-                  <rect x="10" y="3" width="4" height="4" rx="1" fill="currentColor" />
-                  <rect x="17" y="3" width="4" height="4" rx="1" fill="currentColor" />
-                  <rect x="3" y="10" width="4" height="4" rx="1" fill="currentColor" />
-                  <rect x="10" y="10" width="4" height="4" rx="1" fill="currentColor" />
-                  <rect x="17" y="10" width="4" height="4" rx="1" fill="currentColor" />
-                  <rect x="3" y="17" width="4" height="4" rx="1" fill="currentColor" />
-                  <rect x="10" y="17" width="4" height="4" rx="1" fill="currentColor" />
-                  <rect x="17" y="17" width="4" height="4" rx="1" fill="currentColor" />
-                </svg>
-              </div>
+              <img
+                src="/logo.png"
+                alt="Anesthesia Scheduler Logo"
+                className="size-10 object-contain"
+              />
               <div className="flex flex-col">
                 <span className="text-sm font-bold leading-tight text-gray-900">Anesthesia</span>
                 <span className="text-sm font-bold leading-tight text-primary">SCHEDULER</span>
