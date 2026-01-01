@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 
 export const AnesthesiaFeatures = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [expandedFeature, setExpandedFeature] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export const AnesthesiaFeatures = () => {
       icon: MapPin,
       title: 'Managing Multiple Locations',
       description:
-        'Many of our clients manage multiple locations, each with its own unique groups and needs. Our application makes it easy for administrators to meet those needs by customizing schedules, privileges, and reporting for every group at every location. We work closely with you to ensure each setup is seamless, efficient, and perfectly tailored to your practice.',
+        'Easily manage multiple locations, each with its own unique groups and needs. Customize schedules, privileges, and reporting for every group at every location. We work closely with you to ensure each setup is perfectly tailored to your practice.',
     },
     {
       id: 'privileges',
@@ -89,35 +90,76 @@ export const AnesthesiaFeatures = () => {
           }}
         >
           <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
-            The Anesthesia Scheduler offers
+            Explore the Anesthesia Scheduler&apos;s Features
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-gray-600">
-            Comprehensive features designed to streamline your scheduling workflow
-          </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => {
             const Icon = feature.icon;
+            const isExpanded = expandedFeature === feature.id;
             return (
               <div
                 key={feature.id}
-                className="rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl"
+                role="button"
+                tabIndex={0}
+                onClick={() => setExpandedFeature(isExpanded ? null : feature.id)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setExpandedFeature(isExpanded ? null : feature.id);
+                  }
+                }}
+                className="group cursor-pointer"
                 style={{
                   opacity: isVisible ? 1 : 0,
                   transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.95)',
                   transition: `opacity 0.5s ease-out ${0.1 + index * 0.08}s, transform 0.5s ease-out ${0.1 + index * 0.08}s`,
+                  perspective: '1000px',
+                  height: '240px',
                 }}
               >
-                <div className="mb-4 inline-flex rounded-xl bg-primary/10 p-3 text-primary">
-                  <Icon className="size-6" />
+                {/* Card flip container */}
+                <div
+                  className="relative h-full transition-transform duration-700"
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    transform: isExpanded ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                  }}
+                >
+                  {/* Front of card */}
+                  <div
+                    className="absolute inset-0 flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-shadow group-hover:shadow-xl"
+                    style={{
+                      backfaceVisibility: 'hidden',
+                      WebkitBackfaceVisibility: 'hidden',
+                    }}
+                  >
+                    <div className="mb-4 text-primary">
+                      <Icon className="size-8" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      {feature.title}
+                    </h3>
+                  </div>
+
+                  {/* Back of card */}
+                  <div
+                    className="absolute inset-0 flex flex-col justify-center rounded-2xl border border-primary bg-gradient-to-br from-purple-50 to-white p-6 shadow-md"
+                    style={{
+                      backfaceVisibility: 'hidden',
+                      WebkitBackfaceVisibility: 'hidden',
+                      transform: 'rotateY(180deg)',
+                    }}
+                  >
+                    <h3 className="mb-3 text-lg font-semibold text-gray-900">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-gray-600">
+                      {feature.description}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="mb-3 text-xl font-semibold text-gray-900">
-                  {feature.title}
-                </h3>
-                <p className="leading-relaxed text-gray-600">
-                  {feature.description}
-                </p>
               </div>
             );
           })}

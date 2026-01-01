@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail } from 'lucide-react';
 
 export const AnesthesiaFooter = () => {
   const currentYear = new Date().getFullYear();
@@ -9,7 +9,6 @@ export const AnesthesiaFooter = () => {
       links: [
         { name: 'Home', href: '#' },
         { name: 'Features', href: '#features' },
-        { name: 'Pricing', href: '#pricing' },
         { name: 'Support', href: '#support' },
       ],
     },
@@ -65,22 +64,12 @@ export const AnesthesiaFooter = () => {
           {/* Contact */}
           <div>
             <h3 className="mb-4 font-semibold text-gray-900">Contact</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3 text-sm text-gray-600">
-                <Mail className="mt-0.5 size-4 shrink-0 text-primary" />
-                <a href="mailto:info@anesthesiascheduler.com" className="hover:text-primary">
-                  info@anesthesiascheduler.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3 text-sm text-gray-600">
-                <Phone className="mt-0.5 size-4 shrink-0 text-primary" />
-                <span>Contact us for phone support</span>
-              </li>
-              <li className="flex items-start gap-3 text-sm text-gray-600">
-                <MapPin className="mt-0.5 size-4 shrink-0 text-primary" />
-                <span>Serving practices nationwide</span>
-              </li>
-            </ul>
+            <div className="flex items-start gap-3 text-sm text-gray-600">
+              <Mail className="mt-0.5 size-4 shrink-0 text-primary" />
+              <a href="mailto:info@anesthesiascheduler.com" className="hover:text-primary">
+                info@anesthesiascheduler.com
+              </a>
+            </div>
           </div>
         </div>
 

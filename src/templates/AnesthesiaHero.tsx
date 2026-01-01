@@ -1,34 +1,36 @@
 'use client';
 
-import { Calendar, Clock, Users } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import { buttonVariants } from '@/components/ui/buttonVariants';
 
+const screenshots = [
+  {
+    id: 'requests',
+    title: 'Requests',
+    image: '/WhatsApp Image 2026-01-01 at 21.55.14.jpeg',
+  },
+  {
+    id: 'admin',
+    title: 'Administration',
+    image: '/WhatsApp Image 2026-01-01 at 21.55.35.jpeg',
+  },
+  {
+    id: 'reports',
+    title: 'Reports',
+    image: '/WhatsApp Image 2026-01-01 at 21.59.41.jpeg',
+  },
+];
+
 export const AnesthesiaHero = () => {
   const [mounted, setMounted] = useState(false);
+  const [activeTab, setActiveTab] = useState('requests');
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const featureCards = [
-    {
-      icon: Calendar,
-      title: 'Smart Scheduling',
-      description: 'Automatically generate schedules based on your rules and preferences',
-    },
-    {
-      icon: Users,
-      title: 'Multi-Location',
-      description: 'Manage multiple locations with different groups and requirements',
-    },
-    {
-      icon: Clock,
-      title: 'Real-Time Updates',
-      description: 'Access schedules anywhere with web-based technology',
-    },
-  ];
+  const activeScreenshot = screenshots.find(s => s.id === activeTab) ?? screenshots[0]!;
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-white to-purple-50 py-20 md:py-32">
@@ -38,8 +40,8 @@ export const AnesthesiaHero = () => {
         <div className="absolute bottom-0 left-0 size-[400px] rounded-full bg-purple-300/20 blur-3xl" />
       </div>
 
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+      <div className="container mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-8 lg:grid-cols-[0.8fr_1.4fr]">
           {/* Left content */}
           <div className="text-center lg:text-left">
             <div
@@ -104,29 +106,71 @@ export const AnesthesiaHero = () => {
             </div>
           </div>
 
-          {/* Right content - Feature cards */}
-          <div className="relative">
-            <div className="grid gap-4">
-              {featureCards.map((card, index) => {
-                const Icon = card.icon;
-                return (
-                  <div
-                    key={card.title}
-                    className="rounded-2xl border border-purple-200 bg-white p-6 shadow-md transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl"
-                    style={{
-                      opacity: mounted ? 1 : 0,
-                      transform: mounted ? 'translateX(0)' : 'translateX(30px)',
-                      transition: `opacity 0.5s ease-out ${0.3 + index * 0.1}s, transform 0.5s ease-out ${0.3 + index * 0.1}s`,
-                    }}
+          {/* Right content - Screenshot Mockup */}
+          <div
+            className="relative lg:pl-8"
+            style={{
+              opacity: mounted ? 1 : 0,
+              transform: mounted ? 'translateX(0)' : 'translateX(30px)',
+              transition: 'opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s',
+            }}
+          >
+            {/* Tab Navigation */}
+            <div className="mb-6 flex justify-center">
+              <div className="inline-flex gap-2 rounded-xl border border-gray-200 bg-white/80 p-1.5 shadow-sm backdrop-blur-sm">
+                {screenshots.map(screenshot => (
+                  <button
+                    key={screenshot.id}
+                    type="button"
+                    onClick={() => setActiveTab(screenshot.id)}
+                    className={`rounded-lg px-5 py-2.5 text-sm font-medium transition-all ${
+                      activeTab === screenshot.id
+                        ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-md'
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                    }`}
                   >
-                    <div className="mb-4 inline-flex rounded-full bg-purple-100 p-3 text-primary">
-                      <Icon className="size-6" />
+                    {screenshot.title}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Laptop Mockup */}
+            <div className="relative">
+              {/* Laptop Screen */}
+              <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-1 shadow-2xl">
+                {/* Inner bezel */}
+                <div className="overflow-hidden rounded-md bg-black p-0.5">
+                  {/* Browser Window */}
+                  <div className="overflow-hidden rounded-sm bg-white">
+                    {/* Browser Chrome - Minimal */}
+                    <div className="flex items-center justify-between border-b border-gray-200 bg-gray-50 px-3 py-2">
+                      <div className="flex items-center space-x-2">
+                        <div className="flex space-x-1.5">
+                          <div className="size-2.5 rounded-full bg-red-400" />
+                          <div className="size-2.5 rounded-full bg-yellow-400" />
+                          <div className="size-2.5 rounded-full bg-green-400" />
+                        </div>
+                        <div className="ml-3 hidden rounded bg-white px-3 py-1 text-xs text-gray-500 shadow-sm md:block">
+                          anesthesia-scheduler.app
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="mb-2 text-xl font-semibold text-gray-900">{card.title}</h3>
-                    <p className="text-gray-600">{card.description}</p>
+
+                    {/* Screenshot Container */}
+                    <div className="relative bg-white">
+                      <img
+                        src={activeScreenshot.image}
+                        alt={activeScreenshot.title}
+                        className="h-auto w-full transition-opacity duration-300"
+                      />
+                    </div>
                   </div>
-                );
-              })}
+                </div>
+              </div>
+
+              {/* Laptop Base - Sleek minimal design */}
+              <div className="relative mx-auto h-2 w-4/5 rounded-b-xl bg-gradient-to-b from-gray-700 to-gray-800 shadow-lg" />
             </div>
           </div>
         </div>

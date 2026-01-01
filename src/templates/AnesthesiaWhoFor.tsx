@@ -27,9 +27,9 @@ export const AnesthesiaWhoFor = () => {
 
   const audiences = [
     {
-      icon: User,
-      title: 'Sole Practitioners',
-      description: 'Perfect for individual practitioners managing their own schedule',
+      icon: MapPinned,
+      title: 'Multiple Locations w/ Multiple Groups',
+      description: 'Comprehensive solution for complex multi-site operations',
     },
     {
       icon: Building2,
@@ -37,9 +37,9 @@ export const AnesthesiaWhoFor = () => {
       description: 'Ideal for single facilities with multiple provider groups',
     },
     {
-      icon: MapPinned,
-      title: 'Multiple Locations w/ Multiple Groups',
-      description: 'Comprehensive solution for complex multi-site operations',
+      icon: User,
+      title: 'Sole Practitioners',
+      description: 'Perfect for individual practitioners managing their own schedule',
     },
   ];
 
@@ -117,7 +117,7 @@ export const AnesthesiaWhoFor = () => {
           }}
         >
           <h3 className="mb-4 text-2xl font-bold md:text-3xl">
-            Not sure which solution fits your practice?
+            Find out if the Anesthesia Scheduler is the right fit for you
           </h3>
           <p className="mb-6 text-lg text-purple-100">
             We&apos;ll work with you to understand your needs and customize the perfect setup

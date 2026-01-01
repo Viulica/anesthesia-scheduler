@@ -4,7 +4,6 @@ import { AnesthesiaFeatures } from '@/templates/AnesthesiaFeatures';
 import { AnesthesiaFooter } from '@/templates/AnesthesiaFooter';
 import { AnesthesiaHero } from '@/templates/AnesthesiaHero';
 import { AnesthesiaNavbar } from '@/templates/AnesthesiaNavbar';
-import { AnesthesiaPricing } from '@/templates/AnesthesiaPricing';
 import { AnesthesiaSupport } from '@/templates/AnesthesiaSupport';
 import { AnesthesiaWhoFor } from '@/templates/AnesthesiaWhoFor';
 
@@ -24,7 +23,6 @@ const IndexPage = (props: { params: { locale: string } }) => {
       <AnesthesiaHero />
       <AnesthesiaFeatures />
       <AnesthesiaWhoFor />
-      <AnesthesiaPricing />
       <AnesthesiaSupport />
       <AnesthesiaFooter />
     </>

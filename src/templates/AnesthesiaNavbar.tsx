@@ -58,10 +58,10 @@ export const AnesthesiaNavbar = () => {
         transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
       }}
     >
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-3">
+          <a href="/" className="flex shrink-0 items-center gap-3">
             <img
               src="/logo.png"
               alt="Anesthesia Scheduler Logo"
