@@ -17,13 +17,12 @@ export const AnesthesiaNavbar = () => {
   const navItems = [
     { name: 'Home', href: '#', id: '' },
     { name: 'Features', href: '#features', id: 'features' },
-    { name: 'Pricing', href: '#pricing', id: 'pricing' },
     { name: 'Support', href: '#support', id: 'support' },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['features', 'pricing', 'support'];
+      const sections = ['features', 'support'];
       const scrollPosition = window.scrollY + 100;
 
       if (window.scrollY < 100) {
