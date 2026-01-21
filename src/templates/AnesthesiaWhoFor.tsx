@@ -109,25 +109,43 @@ export const AnesthesiaWhoFor = () => {
 
         {/* Additional info */}
         <div
-          className="mt-16 rounded-2xl bg-gradient-to-r from-purple-600 to-purple-500 p-8 text-center text-white shadow-xl md:p-12"
+          className="relative mt-16 overflow-hidden rounded-2xl bg-gradient-to-r from-purple-600 to-purple-500 p-8 text-center text-white shadow-xl md:p-12"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.98)',
             transition: 'opacity 0.6s ease-out 0.5s, transform 0.6s ease-out 0.5s',
           }}
         >
-          <h3 className="mb-4 text-2xl font-bold md:text-3xl">
-            Find out if the Anesthesia Scheduler is the right fit for you
-          </h3>
-          <p className="mb-6 text-lg text-purple-100">
-            We&apos;ll work with you to understand your needs and customize the perfect setup
-          </p>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-3 font-semibold text-purple-600 transition-transform hover:scale-105"
-          >
-            Contact Us Today
-          </a>
+          {/* Checker pattern overlay */}
+          <div
+            className="absolute inset-0 opacity-10"
+            style={{
+              backgroundImage: `
+                linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.15) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.15) 75%)
+              `,
+              backgroundSize: '40px 40px',
+              backgroundPosition: '0 0, 0 20px, 20px -20px, -20px 0px',
+            }}
+          />
+
+          {/* Content */}
+          <div className="relative z-10">
+            <h3 className="mb-4 text-2xl font-bold md:text-3xl">
+              Find out if the Anesthesia Scheduler is the right fit for you
+            </h3>
+            <p className="mb-6 text-lg text-purple-100">
+              We&apos;ll work with you to understand your needs and customize the perfect setup
+            </p>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-3 font-semibold text-purple-600 transition-transform hover:scale-105"
+            >
+              Contact Us Today
+            </a>
+          </div>
         </div>
       </div>
     </section>

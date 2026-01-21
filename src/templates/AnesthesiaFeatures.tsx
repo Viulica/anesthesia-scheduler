@@ -1,6 +1,6 @@
 'use client';
 
-import { Bell, Calendar, FileText, MapPin, Smartphone } from 'lucide-react';
+import { Bell, Calendar, ChevronDown, ChevronRight, FileText, MapPin } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 export const AnesthesiaFeatures = () => {
@@ -69,13 +69,6 @@ export const AnesthesiaFeatures = () => {
       description:
         'Keep providers informed about assignments, schedule changes, and request responses with automated email and push notifications. You can also communicate directly with providers using our built-in messaging tool for easy, accessible communication.',
     },
-    {
-      id: 'mobile',
-      icon: Smartphone,
-      title: 'Mobile App',
-      description:
-        'Manage schedules on the go! Providers can view schedules and request shifts or vacations, while administrators can review schedules and requests—all from the mobile app!',
-    },
   ];
 
   return (
@@ -94,7 +87,7 @@ export const AnesthesiaFeatures = () => {
           </h2>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto max-w-4xl space-y-3">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             const isExpanded = expandedFeature === feature.id;
@@ -110,54 +103,69 @@ export const AnesthesiaFeatures = () => {
                     setExpandedFeature(isExpanded ? null : feature.id);
                   }
                 }}
-                className="group cursor-pointer"
+                className="group cursor-pointer overflow-hidden rounded-lg border border-gray-200 bg-white transition-colors hover:border-purple-300 hover:shadow-md"
                 style={{
                   opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.95)',
-                  transition: `opacity 0.5s ease-out ${0.1 + index * 0.08}s, transform 0.5s ease-out ${0.1 + index * 0.08}s`,
-                  perspective: '1000px',
-                  height: '240px',
+                  transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                  transition: `opacity 0.5s ease-out ${0.1 + index * 0.05}s, transform 0.5s ease-out ${0.1 + index * 0.05}s`,
+                  textDecoration: 'none',
                 }}
               >
-                {/* Card flip container */}
+                {/* Header - Always visible */}
                 <div
-                  className="relative h-full transition-transform duration-700"
+                  className={`flex items-center gap-4 px-6 py-4 ${
+                    isExpanded ? 'border-b border-purple-200 bg-purple-50' : ''
+                  }`}
+                >
+                  <div className={`flex size-10 shrink-0 items-center justify-center rounded-lg transition-colors ${
+                    isExpanded
+                      ? 'bg-primary text-white'
+                      : 'bg-purple-50 text-primary'
+                  }`}
+                  >
+                    <Icon className="size-5" />
+                  </div>
+                  <h3
+                    className="grow text-lg font-semibold text-gray-900"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    {feature.title}
+                  </h3>
+                  <div className="shrink-0 text-gray-400">
+                    {isExpanded
+                      ? (
+                          <ChevronDown className="size-5" />
+                        )
+                      : (
+                          <ChevronRight className="size-5" />
+                        )}
+                  </div>
+                </div>
+
+                {/* Expandable content - CSS Grid trick */}
+                <div
+                  className="overflow-hidden"
                   style={{
-                    transformStyle: 'preserve-3d',
-                    transform: isExpanded ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                    display: 'grid',
+                    gridTemplateRows: isExpanded ? '1fr' : '0fr',
+                    willChange: 'grid-template-rows',
+                    transform: 'translateZ(0)',
+                    transition: 'grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
                   }}
                 >
-                  {/* Front of card */}
                   <div
-                    className="absolute inset-0 flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-shadow group-hover:shadow-xl"
                     style={{
-                      backfaceVisibility: 'hidden',
-                      WebkitBackfaceVisibility: 'hidden',
+                      minHeight: 0,
+                      opacity: isExpanded ? 1 : 0,
+                      transform: isExpanded ? 'translateY(0)' : 'translateY(10px)',
+                      transition: 'opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
                     }}
                   >
-                    <div className="mb-4 text-primary">
-                      <Icon className="size-8" />
+                    <div className="px-6 py-4 pl-20">
+                      <p className="leading-relaxed text-gray-600">
+                        {feature.description}
+                      </p>
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900">
-                      {feature.title}
-                    </h3>
-                  </div>
-
-                  {/* Back of card */}
-                  <div
-                    className="absolute inset-0 flex flex-col justify-center rounded-2xl border border-primary bg-gradient-to-br from-purple-50 to-white p-6 shadow-md"
-                    style={{
-                      backfaceVisibility: 'hidden',
-                      WebkitBackfaceVisibility: 'hidden',
-                      transform: 'rotateY(180deg)',
-                    }}
-                  >
-                    <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-gray-600">
-                      {feature.description}
-                    </p>
                   </div>
                 </div>
               </div>

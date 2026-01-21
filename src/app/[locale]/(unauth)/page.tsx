@@ -3,6 +3,7 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 import { AnesthesiaFeatures } from '@/templates/AnesthesiaFeatures';
 import { AnesthesiaFooter } from '@/templates/AnesthesiaFooter';
 import { AnesthesiaHero } from '@/templates/AnesthesiaHero';
+import { AnesthesiaMobileApp } from '@/templates/AnesthesiaMobileApp';
 import { AnesthesiaNavbar } from '@/templates/AnesthesiaNavbar';
 import { AnesthesiaSupport } from '@/templates/AnesthesiaSupport';
 import { AnesthesiaWhoFor } from '@/templates/AnesthesiaWhoFor';
@@ -21,6 +22,7 @@ const IndexPage = (props: { params: { locale: string } }) => {
     <>
       <AnesthesiaNavbar />
       <AnesthesiaHero />
+      <AnesthesiaMobileApp />
       <AnesthesiaFeatures />
       <AnesthesiaWhoFor />
       <AnesthesiaSupport />

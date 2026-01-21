@@ -1,6 +1,6 @@
 'use client';
 
-import { Book, GraduationCap, Headphones, HelpCircle, Mail, MessageSquare, Video } from 'lucide-react';
+import { Book, DollarSign, GraduationCap, Headphones, HelpCircle, Mail, MessageSquare, Video } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 export const AnesthesiaSupport = () => {
@@ -96,7 +96,7 @@ export const AnesthesiaSupport = () => {
             </p>
 
             {/* Resources Grid */}
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="mb-8 grid gap-4 sm:grid-cols-2">
               {resources.map((resource, index) => {
                 const Icon = resource.icon;
                 return (
@@ -117,6 +117,31 @@ export const AnesthesiaSupport = () => {
                   </div>
                 );
               })}
+            </div>
+
+            {/* Pricing CTA */}
+            <div
+              id="pricing"
+              className="rounded-2xl border-2 border-purple-500 bg-purple-50/50 p-8 shadow-lg"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.98)',
+                transition: 'opacity 0.6s ease-out 0.5s, transform 0.6s ease-out 0.5s',
+              }}
+            >
+              <div className="mb-4 inline-flex rounded-full bg-primary/10 p-3">
+                <DollarSign className="size-6 text-primary" />
+              </div>
+              <h3 className="mb-2 text-2xl font-bold text-gray-900">Flexible Pricing Tailored to Your Practice</h3>
+              <p className="mb-6 text-gray-700">
+                Flexible pricing tailored to your practice size and operational needs. Contact us to receive your custom quote.
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold text-white transition-transform hover:scale-105"
+              >
+                Get Your Custom Quote
+              </a>
             </div>
           </div>
 
@@ -164,27 +189,45 @@ export const AnesthesiaSupport = () => {
             {/* Contact CTA */}
             <div
               id="contact"
-              className="rounded-2xl bg-gradient-to-br from-purple-600 to-purple-500 p-8 text-white shadow-xl"
+              className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-600 to-purple-500 p-8 text-white shadow-xl"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.98)',
                 transition: 'opacity 0.6s ease-out 0.6s, transform 0.6s ease-out 0.6s',
               }}
             >
-              <div className="mb-4 inline-flex rounded-full bg-white/20 p-3">
-                <Mail className="size-6" />
+              {/* Checker pattern overlay */}
+              <div
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%),
+                    linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.15) 75%),
+                    linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.15) 75%)
+                  `,
+                  backgroundSize: '40px 40px',
+                  backgroundPosition: '0 0, 0 20px, 20px -20px, -20px 0px',
+                }}
+              />
+
+              {/* Content */}
+              <div className="relative z-10">
+                <div className="mb-4 inline-flex rounded-full bg-white/20 p-3">
+                  <Mail className="size-6" />
+                </div>
+                <h3 className="mb-2 text-2xl font-bold">Questions? Contact us!</h3>
+                <p className="mb-6 text-purple-100">
+                  We&apos;ll be glad to hear from you
+                </p>
+                <a
+                  href="mailto:info@anesthesiascheduler.com"
+                  className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-purple-600 transition-transform hover:scale-105"
+                >
+                  <Mail className="size-5" />
+                  info@anesthesiascheduler.com
+                </a>
               </div>
-              <h3 className="mb-2 text-2xl font-bold">Questions? Contact us!</h3>
-              <p className="mb-6 text-purple-100">
-                We&apos;ll be glad to hear from you
-              </p>
-              <a
-                href="mailto:info@anesthesiascheduler.com"
-                className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-purple-600 transition-transform hover:scale-105"
-              >
-                <Mail className="size-5" />
-                info@anesthesiascheduler.com
-              </a>
             </div>
           </div>
         </div>
