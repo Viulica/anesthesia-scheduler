@@ -137,7 +137,7 @@ export const AnesthesiaSupport = () => {
                 Flexible pricing tailored to your practice size and operational needs. Contact us to receive your custom quote.
               </p>
               <a
-                href="#contact"
+                href="mailto:info@anesthesiascheduler.com"
                 className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold text-white transition-transform hover:scale-105"
               >
                 Get Your Custom Quote
