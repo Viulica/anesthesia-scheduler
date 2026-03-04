@@ -64,7 +64,7 @@ export const AnesthesiaSupport = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="support" className="bg-white py-20 md:py-32">
+    <section ref={sectionRef} id="support" className="scroll-mt-24 bg-white py-20 md:py-32">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left side - Support & Training */}
@@ -119,10 +119,10 @@ export const AnesthesiaSupport = () => {
               })}
             </div>
 
-            {/* Pricing CTA */}
+            {/* Pricing CTA - scroll target for nav #pricing */}
             <div
               id="pricing"
-              className="rounded-2xl border-2 border-purple-500 bg-purple-50/50 p-8 shadow-lg"
+              className="scroll-mt-24 rounded-2xl border-2 border-purple-500 bg-purple-50/50 p-8 shadow-lg"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.98)',

@@ -12,15 +12,6 @@ export const AnesthesiaFooter = () => {
         { name: 'Support', href: '#support' },
       ],
     },
-    {
-      title: 'Resources',
-      links: [
-        { name: 'Admin Manual', href: '#' },
-        { name: 'User Manual', href: '#' },
-        { name: 'Video Tutorials', href: '#' },
-        { name: 'FAQs', href: '#' },
-      ],
-    },
   ];
 
   return (

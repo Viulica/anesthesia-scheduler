@@ -24,9 +24,10 @@ export const AnesthesiaNavbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['features', 'pricing', 'support'];
-      const scrollPosition = window.scrollY + 100;
+      const scrollY = window.scrollY;
+      const viewportMid = scrollY + window.innerHeight / 2;
 
-      if (window.scrollY < 100) {
+      if (scrollY < 100) {
         setActiveSection('');
         return;
       }
@@ -34,8 +35,10 @@ export const AnesthesiaNavbar = () => {
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
         if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          const rect = element.getBoundingClientRect();
+          const top = rect.top + scrollY;
+          const bottom = top + rect.height;
+          if (viewportMid >= top && viewportMid < bottom) {
             setActiveSection(sectionId);
             return;
           }

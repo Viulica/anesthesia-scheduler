@@ -1,5 +1,3 @@
-import { unstable_setRequestLocale } from 'next-intl/server';
-
 import { AnesthesiaFeatures } from '@/templates/AnesthesiaFeatures';
 import { AnesthesiaFooter } from '@/templates/AnesthesiaFooter';
 import { AnesthesiaHero } from '@/templates/AnesthesiaHero';
@@ -8,16 +6,12 @@ import { AnesthesiaNavbar } from '@/templates/AnesthesiaNavbar';
 import { AnesthesiaSupport } from '@/templates/AnesthesiaSupport';
 import { AnesthesiaWhoFor } from '@/templates/AnesthesiaWhoFor';
 
-export async function generateMetadata() {
-  return {
-    title: 'Anesthesia Scheduler - Streamline Call and Operating Room Coverage',
-    description: 'A web-based application that streamlines call and operating room coverage with fully customizable schedules, workflows, and coverage rules.',
-  };
-}
+export const metadata = {
+  title: 'Anesthesia Scheduler - Streamline Call and Operating Room Coverage',
+  description: 'A web-based application that streamlines call and operating room coverage with fully customizable schedules, workflows, and coverage rules.',
+};
 
-const IndexPage = (props: { params: { locale: string } }) => {
-  unstable_setRequestLocale(props.params.locale);
-
+export default function IndexPage() {
   return (
     <>
       <AnesthesiaNavbar />
@@ -29,6 +23,4 @@ const IndexPage = (props: { params: { locale: string } }) => {
       <AnesthesiaFooter />
     </>
   );
-};
-
-export default IndexPage;
+}
