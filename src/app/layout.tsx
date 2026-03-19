@@ -60,6 +60,9 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true },
   },
+  verification: {
+    google: 'MZOpdl3WuMR6jgXFDPxV--72wGcLvm9R1kfF',
+  },
   icons: [
     { rel: 'apple-touch-icon', url: '/apple-touch-icon.png?v=2' },
     { rel: 'icon', type: 'image/png', sizes: '32x32', url: '/favicon-32x32.png?v=2' },
