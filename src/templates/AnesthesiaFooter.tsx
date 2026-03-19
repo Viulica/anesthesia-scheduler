@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Mail } from 'lucide-react';
 
 export const AnesthesiaFooter = () => {
@@ -21,9 +22,11 @@ export const AnesthesiaFooter = () => {
           {/* Company Info */}
           <div>
             <div className="mb-4 flex items-center gap-3">
-              <img
+              <Image
                 src="/logo.png"
                 alt="Anesthesia Scheduler Logo"
+                width={40}
+                height={40}
                 className="size-10 object-contain"
               />
               <div className="flex flex-col">

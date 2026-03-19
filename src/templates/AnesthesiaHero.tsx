@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 import { buttonVariants } from '@/components/ui/buttonVariants';
@@ -47,9 +48,8 @@ export const AnesthesiaHero = () => {
             <div
               className="mb-6 inline-block rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary"
               style={{
-                opacity: mounted ? 1 : 0,
                 transform: mounted ? 'translateY(0)' : 'translateY(20px)',
-                transition: 'opacity 0.6s ease-out 0.1s, transform 0.6s ease-out 0.1s',
+                transition: 'transform 0.6s ease-out 0.1s',
               }}
             >
               Modern Scheduling Solutions
@@ -58,9 +58,8 @@ export const AnesthesiaHero = () => {
             <h1
               className="mb-6 text-4xl font-bold leading-tight text-gray-900 md:text-5xl lg:text-6xl"
               style={{
-                opacity: mounted ? 1 : 0,
                 transform: mounted ? 'translateY(0)' : 'translateY(20px)',
-                transition: 'opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s',
+                transition: 'transform 0.6s ease-out 0.2s',
               }}
             >
               The
@@ -73,9 +72,8 @@ export const AnesthesiaHero = () => {
             <p
               className="mb-8 text-lg leading-relaxed text-gray-600 md:text-xl"
               style={{
-                opacity: mounted ? 1 : 0,
                 transform: mounted ? 'translateY(0)' : 'translateY(20px)',
-                transition: 'opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s',
+                transition: 'transform 0.6s ease-out 0.3s',
               }}
             >
               A web-based application that streamlines call and operating room coverage.
@@ -86,9 +84,8 @@ export const AnesthesiaHero = () => {
             <div
               className="flex flex-wrap justify-center gap-4 lg:justify-start"
               style={{
-                opacity: mounted ? 1 : 0,
                 transform: mounted ? 'translateY(0)' : 'translateY(20px)',
-                transition: 'opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s',
+                transition: 'transform 0.6s ease-out 0.4s',
               }}
             >
               <a
@@ -110,9 +107,8 @@ export const AnesthesiaHero = () => {
           <div
             className="relative lg:pl-8"
             style={{
-              opacity: mounted ? 1 : 0,
               transform: mounted ? 'translateX(0)' : 'translateX(30px)',
-              transition: 'opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s',
+              transition: 'transform 0.6s ease-out 0.4s',
             }}
           >
             {/* Tab Navigation */}
@@ -159,9 +155,13 @@ export const AnesthesiaHero = () => {
 
                     {/* Screenshot Container */}
                     <div className="relative bg-white">
-                      <img
+                      <Image
                         src={activeScreenshot.image}
                         alt={activeScreenshot.title}
+                        width={1200}
+                        height={800}
+                        sizes="(max-width: 1024px) 100vw, 800px"
+                        priority={activeTab === 'requests'}
                         className="h-auto w-full transition-opacity duration-300"
                       />
                     </div>

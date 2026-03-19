@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -65,9 +66,11 @@ export const AnesthesiaNavbar = () => {
         <div className="flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
           <a href="/" className="flex shrink-0 items-center gap-3">
-            <img
+            <Image
               src="/logo.png"
               alt="Anesthesia Scheduler Logo"
+              width={40}
+              height={40}
               className="size-10 object-contain"
             />
             <div className="flex flex-col">
@@ -103,13 +106,12 @@ export const AnesthesiaNavbar = () => {
           <div
             className="hidden items-center gap-4 md:flex"
             style={{
-              opacity: mounted ? 1 : 0,
               transform: mounted ? 'translateY(0)' : 'translateY(-10px)',
-              transition: 'opacity 0.4s ease-out 0.3s, transform 0.4s ease-out 0.3s',
+              transition: 'transform 0.4s ease-out 0.3s',
             }}
           >
             <a
-              href="/sign-in"
+              href="https://www.anesthesiascheduler.com/app"
               className="text-gray-700 transition-colors hover:text-primary"
             >
               Log In
@@ -153,7 +155,7 @@ export const AnesthesiaNavbar = () => {
               ))}
               <hr className="my-2" />
               <a
-                href="/sign-in"
+                href="https://www.anesthesiascheduler.com/app"
                 className="rounded-lg px-3 py-2 text-gray-700 transition-colors hover:bg-purple-50 hover:text-primary"
               >
                 Log In
