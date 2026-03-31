@@ -7,25 +7,35 @@ import { buttonVariants } from '@/components/ui/buttonVariants';
 
 const screenshots = [
   {
-    id: 'requests',
-    title: 'Requests',
-    image: '/WhatsApp Image 2026-01-01 at 21.55.14.jpeg',
+    id: 'dashboard',
+    title: 'Dashboard',
+    image: '/anesthesia--dashboard.png',
   },
   {
-    id: 'admin',
+    id: 'schedule',
+    title: 'Schedule',
+    image: '/anesthesia--schedule.png',
+  },
+  {
+    id: 'vacation-requests',
+    title: 'Vacation Requests',
+    image: '/anesthesia--vacation-requests.png',
+  },
+  {
+    id: 'administration',
     title: 'Administration',
-    image: '/WhatsApp Image 2026-01-01 at 21.55.35.jpeg',
+    image: '/anesthesia--administration.png',
   },
   {
     id: 'reports',
     title: 'Reports',
-    image: '/WhatsApp Image 2026-01-01 at 21.59.41.jpeg',
+    image: '/anesthesia--reports.png',
   },
 ];
 
 export const AnesthesiaHero = () => {
   const [mounted, setMounted] = useState(false);
-  const [activeTab, setActiveTab] = useState('requests');
+  const [activeTab, setActiveTab] = useState('schedule');
 
   useEffect(() => {
     setMounted(true);
@@ -161,7 +171,7 @@ export const AnesthesiaHero = () => {
                         width={1200}
                         height={800}
                         sizes="(max-width: 1024px) 100vw, 800px"
-                        priority={activeTab === 'requests'}
+                        priority={activeTab === 'schedule'}
                         className="h-auto w-full transition-opacity duration-300"
                       />
                     </div>
